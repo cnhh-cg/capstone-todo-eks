@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  labels:
+    app.kubernetes.io/name: group2-eks-default 
+    app.kubernetes.io/instance: group2-eks-default-instance
+    app.kubernetes.io/version: '1.0.0' 
+    app.kubernetes.io/managed-by: kubectl
+  name: group2-cicd-demo-deployment
+spec:
+  replicas: 1 
+  selector:
+    matchLabels: 
+      app: todoeks
+  template: 
+    metadata: 
+      labels:
+        app: todoeks
+  spec:
+    containers:
+    - image: 962804699607.dkr.ecr.us-west-2.amazonaws.com/group2-ch-eks:latest
+      imagePullPolicy: Always 
+      name: todoeks
+  ports:
+  - containerPort: 3000
