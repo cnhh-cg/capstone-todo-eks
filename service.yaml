@@ -12,7 +12,7 @@ spec:
   selector:
     app: todoeks
   type: NodePort
-    ports:
+  ports:
     - protocol: TCP 
       port: 80
       targetPort: 3000
