@@ -18,8 +18,8 @@ spec:
         app: todoeks
   spec:
     containers:
-    - image: 962804699607.dkr.ecr.us-west-2.amazonaws.com/group2-ch-eks:latest
-      imagePullPolicy: Always 
-      name: todoeks
-      ports:
-        - containerPort: 3000
+      - image: 962804699607.dkr.ecr.us-west-2.amazonaws.com/group2-ch-eks:latest
+        imagePullPolicy: Always 
+        name: todoeks
+        ports:
+          - containerPort: 3000
