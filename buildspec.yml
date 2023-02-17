@@ -1,0 +1,34 @@
+version: 0.2
+
+env:
+  variables:
+    IMAGE_NAME: "latest"
+    ECR_URL: "should be passing in from the build"
+    CONTAINER_NAME: "name should match with the task definition: ch-todo-task-container"
+
+phases:
+  install:
+    commands:
+      - echo install step...
+      - echo try with braces ${IMAGE_NAME}
+      - echo try with out $IMAGE_NAME
+      - echo Container Name ${CONTAINER_NAME}
+  pre_build:
+    commands:
+      - echo logging in to AWS ECR...
+      - $(aws ecr get-login --no-include-email --region us-west-2)
+  build:
+    commands:
+      - echo build Docker image on `date`
+      - docker build -t ${IMAGE_NAME}:latest .
+      - docker tag $IMAGE_NAME:latest $ECR_URL:latest
+  post_build:
+    commands:
+      - echo build Docker image complete `date`
+      - echo push latest Docker images to ECR...
+      - docker push $ECR_URL:latest
+      - echo '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $ECR_URL:latest
+      - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $ECR_URL:latest > imagedefinitions.json
+artifacts:
+  files: 
+    - imagedefinitions.json     
