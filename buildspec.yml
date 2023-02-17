@@ -13,7 +13,7 @@ phases:
   pre_build: 
     commands:
       - echo Logging into Amazon EKS...
-      - aws eks --region us-west-2 update-kubeconfig --name group2-eks-default 
+      - aws eks --region us-west-2 update-kubeconfig --name group2-ch-eks-cluster 
       - echo check config
       - kubectl config view --minify
       - echo check kubectl access

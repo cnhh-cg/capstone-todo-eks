@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Service 
 metadata:
   labels:
-    app.kubernetes.io/name: group2-eks-default 
-    app.kubernetes.io/instance: group2-eks-default-instance
+    app.kubernetes.io/name: group2-ch-eks-cluster 
+    app.kubernetes.io/instance: group2-ch-eks-cluster-instance
     app.kubernetes.io/version: "1.0.0" 
     app.kubernetes.io/component: backend 
     app.kubernetes.io/managed-by: kubectl

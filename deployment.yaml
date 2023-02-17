@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment 
 metadata:
   labels:
-    app.kubernetes.io/name: group2-eks-default 
-    app.kubernetes.io/instance: group2-eks-default-instance
+    app.kubernetes.io/name: group2-ch-eks-cluster 
+    app.kubernetes.io/instance: group2-ch-eks-cluster-instance
     app.kubernetes.io/version: '1.0.0' 
     app.kubernetes.io/managed-by: kubectl
   name: group2-cicd-demo-deployment

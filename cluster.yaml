@@ -1,0 +1,25 @@
+apiVersion: eksctl.io/v1alpha5 
+kind: ClusterConfig
+metadata:
+  name: group2-ch-eks-cluster #cluster name 
+  region: us-west-2 #desired region
+ 
+vpc:
+  id: "vpc-0d595b75"
+  subnets:
+    public:
+      us-west-2c: { id : subnet-3e8be563  }
+      us-west-2b: { id : subnet-a46ad3ee }
+      us-west-2d: { id : subnet-d5c92fff }
+      us-west-2a: { id : subnet-3e22be46 }
+    private:
+      us-west-2a: { id : subnet-0037241a90b710f01 }
+      us-west-2c: { id : subnet-0cf096e87ed8ee205 }
+      us-west-2b: { id : subnet-08f7f70b867c2d9d6 }
+nodeGroups:
+  - name: group2-ch-eks-nodegroup #cluster node group name
+    instanceType: t3.small #desired instance type 
+    desiredCapacity: 1 #desired nodes count / capacity 
+    ssh:
+      allow: false # if true - will use ~/.ssh/id_rsa.pub as the default ssh key
+      #publicKeyPath: ~/.ssh/ec2_id_rsa.pub #you can specify the public key path likr this as well
